@@ -1,10 +1,55 @@
-/* maybe link bootstrap for buttons */
 /* have the h1s and the buttons be the same font */
-/* put a cream colored background on the whole page */
-/* have a regular white bacground on the second div */
-/* create a grey dotted border around where the password is generated with rounded edges */
-/* "your secure password" is in a different font than the rest */
-/* generate password button should be red */
-/* when generate password is hovered over have it go a darker red */
-/* the copy clipboard is grey when inactive and blue when active */
-/* have both blue and grey copy clipboard be a shade darker when hovered */
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+    color: grey;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+hr {
+    width: 900px;
+}
+.generate {
+    font-family: Arial, Helvetica, sans-serif;
+    background: crimson;
+    border: crimson;
+    border-radius: 20px;
+    color: #ffffff;
+    width: 200px;
+    height: 40px;
+    font-size: larger;
+}
+.copy {
+    font-family: Arial, Helvetica, sans-serif;
+    background: blue;
+    border: blue;
+    border-radius: 20px;
+    color: #ffffff;
+    width: 200px;
+    height: 40px;
+    font-size: larger;
+    float: right;
+}
+.container {
+    text-align: center;
+    margin: auto;
+    width: 960px;
+    background: #f9fbfd;
+}
+.container-all {
+    width: 900px;
+    text-align: left;
+}
+.password-container {
+    border: grey;
+    border-width: 2px;
+    border-style: dashed;
+    width: 60%;
+    height: 150px;
+    border-radius: 10px;
+    align-content: center;
+    margin-left: 200px;
+}
