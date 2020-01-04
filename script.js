@@ -1,5 +1,4 @@
-//the generate button should open the promts when clicked
-// create variables for cap letters, lowercase letters, numbers, special
+ //global variables
 var generateBtn = document.querySelector(".generate");
 var copyBtn = document.querySelector(".copy");
 var pasEl = document.querySelector(".password-container");
@@ -7,6 +6,8 @@ var capLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 var specialChar = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
 var numChar = "1234567890";
+
+ //functions
 function generateSelectedCharacterOptions(cap, low, special, num) {
   var characterOptions = [];
   if (cap) {
@@ -23,10 +24,11 @@ function generateSelectedCharacterOptions(cap, low, special, num) {
   }
   return characterOptions;
 }
+
 function fallbackCopyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
   textArea.value = text;
-  textArea.style.position = "fixed"; //avoid scrolling to bottom
+  textArea.style.position = "fixed";
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
@@ -39,6 +41,7 @@ function fallbackCopyTextToClipboard(text) {
   }
   document.body.removeChild(textArea);
 }
+
 function copyTextToClipboard(text) {
   if (!navigator.clipboard) {
     fallbackCopyTextToClipboard(text);
@@ -53,8 +56,9 @@ function copyTextToClipboard(text) {
     }
   );
 }
+
+ //events
 generateBtn.addEventListener("click", function(event) {
-  //character length prompt
   var pasLength = prompt(
     "How long would you like your password to be? (between 8 and 128 characters)"
   );
@@ -64,19 +68,17 @@ generateBtn.addEventListener("click", function(event) {
   } else {
     console.log("Yay! Time to choose characters!");
   }
-  //character type prompts
+  
   var cap = confirm("Would you like upper case letters?");
   var low = confirm("Would you like lower case letters?");
-  var special = confirm(
-    "Would you like special characters? (!#$%&()*+,-./:;<=>?@[]^_`{|}~)"
-  );
+  var special = confirm("Would you like special characters? (!#$%&()*+,-./:;<=>?@[]^_`{|}~)");
   var num = confirm("Would you like numbers?");
+
   if (cap === false && low === false && special === false && num === false) {
     alert(
       "I'm sorry, you have to choose at least one character, please try again."
     );
   } else {
-    //shape "" ""
     var characterOpts = generateSelectedCharacterOptions(
       cap,
       low,
@@ -84,10 +86,8 @@ generateBtn.addEventListener("click", function(event) {
       num
     );
     var password = "";
-    //loop and randomly choose characters based on users specifications for paslength
+    
     for (var i = 0; i < pasLength; i++) {
-      // var randOptions =
-      // var randChar =
       var randomCharTypeIndex = Math.floor(
         Math.random() * characterOpts.length
       );
@@ -95,14 +95,11 @@ generateBtn.addEventListener("click", function(event) {
         Math.random() * characterOpts[randomCharTypeIndex].length
       );
       password += characterOpts[randomCharTypeIndex][randomCharIndex];
-      //randomly choose a type of character
-      //we need to randomly choose a character from that type
-      //we apply that character to current password
     }
-    //supply password to user
     pasEl.textContent = password;
   }
 });
+
 copyBtn.addEventListener("click", function(event) {
   copyTextToClipboard(pasEl.textContent);
 });

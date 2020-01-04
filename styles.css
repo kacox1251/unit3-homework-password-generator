@@ -9,6 +9,7 @@ h3 {
     color: grey;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 hr {
     width: 900px;
 }
@@ -52,4 +53,5 @@ hr {
     border-radius: 10px;
     align-content: center;
     margin-left: 200px;
+    text-align: center;
 }
